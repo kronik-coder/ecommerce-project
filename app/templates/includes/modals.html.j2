@@ -1,0 +1,38 @@
+<div class="modal fade" id="view-more-{{book.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ book.book_name }}</h5>
+      </div>
+      <div class="modal-body">
+          <p>Author: {{ book.book_author }}</p>
+          <p>Genre: {{ book.genre }}</p>
+          <p>Price: ${{ book.price }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="purchase-{{book.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ book.book_name }}</h5>
+      </div>
+      <div class="modal-body">
+        <h4>Add to Cart for ${{book.price}}?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NO</button>
+        <form method='POST' action="/add_to_cart">
+          {{ buy.hidden_tag() }}
+          <input name="book_id" type="hidden" value="{{ book.id }}">
+          {{ buy.submit(class="btn btn-outline-success btn-block") }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
